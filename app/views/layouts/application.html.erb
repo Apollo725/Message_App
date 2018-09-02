@@ -6,13 +6,21 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag  "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
+  
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-      <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
-    <%= yield %>
+      <%= render 'layouts/nav'%>
+
+      <% flash.each do |key, value| %>
+        <div class="text-center <%= flash_class(key)%>" >
+          <%= value %>
+        </div>
+      <% end %>
+
+      <div class="container">
+        <%= yield %>
+      </div>
   </body>
 </html>
